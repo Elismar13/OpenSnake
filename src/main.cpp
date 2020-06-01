@@ -9,10 +9,10 @@ void renderScene(void) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glBegin(GL_POLYGON);
-		glVertex2d( 0.05f,  0.05f);
-		glVertex2d( 0.05f, -0.05f);
-		glVertex2d(-0.05f, -0.05f);
-		glVertex2d(-0.05f,  0.05f);
+		glVertex2d( 0.1f,  0.1f);
+		glVertex2d( 0.1f, -0.1f);
+		glVertex2d(-0.1f, -0.1f);
+		glVertex2d(-0.1f,  0.1f);
 		
 	glEnd();
 
@@ -20,11 +20,18 @@ void renderScene(void) {
 }
 
 void reshapeWindow(int widht, int height) {
-	glutReshapeWindow(600)
+	glutReshapeWindow(RESOLUCTION_X, RESOLUCTION_Y);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+
+	//Setting projections
+	glOrtho(0, 40.0, 0, 40.0, -1.0, 1.0);
+
+	glMatrixMode(GL_MODELVIEW);
 }
 
 void init () {
-	glClearColor(1.0, 0, 0, 1);
+	glClearColor(0.0, 0.0, 0.0, 1);
 }
 
 int main(int argc, char *argv[])
@@ -32,11 +39,12 @@ int main(int argc, char *argv[])
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE || GLUT_RGBA);
     glutInitWindowPosition(100, 100);
-    glutInitWindowSize(600, 480);
+    glutInitWindowSize(RESOLUCTION_X, RESOLUCTION_Y);
     glutCreateWindow("Hello, World!");
 
 	// register callbacks
 	glutDisplayFunc(renderScene);
+	glutReshapeFunc(reshapeWindow);
 	init();
 	// enter GLUT event processing cycle
 	glutMainLoop();

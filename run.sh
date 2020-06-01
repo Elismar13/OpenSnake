@@ -1,3 +1,3 @@
 cd src
-g++ Snake.cpp -o Snake -lGL -lGLU -lglut
+g++ main.cpp -o Snake -lGL -lGLU -lglut
 ./Snake
