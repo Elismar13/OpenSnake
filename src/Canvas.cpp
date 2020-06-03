@@ -5,6 +5,7 @@
 
 #define RESOLUCTION_X 600
 #define RESOLUCTION_Y 640
+#define GAME_FPS 10
 
 Grid grid;
 
@@ -33,6 +34,12 @@ void gridInit () {
 	grid.initGrid(40, 40);
 }
 
+void frameTime(int time) {
+    // Redesplay and force to continue rendering
+    glutPostRedisplay();
+    glutTimerFunc(1000/GAME_FPS, frameTime, 0);
+}
+
 void canvasInit(int argc, char *argv[])
 {
     glutInit(&argc, argv);
@@ -45,6 +52,11 @@ void canvasInit(int argc, char *argv[])
 	glutDisplayFunc(renderScene);
 	glutReshapeFunc(reshapeWindow);
 	gridInit();
+    
+    // Rendering in a defined time
+    // First call
+    glutTimerFunc(GAME_FPS, frameTime, 0);
+
 	// enter GLUT event processing cycle
 	glutMainLoop();
 }
