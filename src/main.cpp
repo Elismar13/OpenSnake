@@ -1,21 +1,19 @@
 #include <GL/glut.h>
 #include <GL/gl.h>
 
+#include "game.cpp"
+
 #define RESOLUCTION_X 600
 #define RESOLUCTION_Y 640
 
-void renderScene(void) {
+Grid grid;
 
+void renderScene(void) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	glBegin(GL_POLYGON);
-		glVertex2d( 0.1f,  0.1f);
-		glVertex2d( 0.1f, -0.1f);
-		glVertex2d(-0.1f, -0.1f);
-		glVertex2d(-0.1f,  0.1f);
-		
-	glEnd();
+	grid.drawGrid();
 
+	// call the next frame 
 	glutSwapBuffers();
 }
 
@@ -32,6 +30,7 @@ void reshapeWindow(int widht, int height) {
 
 void init () {
 	glClearColor(0.0, 0.0, 0.0, 1);
+	grid.initGrid(40, 40);
 }
 
 int main(int argc, char *argv[])
