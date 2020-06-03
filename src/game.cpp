@@ -8,6 +8,10 @@ class Grid {
         int gridX, gridY;
 
     public:
+        Grid() {
+            
+        }
+
         void initGrid(int x, int y) {
             this->gridX = x;
             this->gridY = y;
@@ -26,7 +30,11 @@ class Grid {
         }
 
         void drawGrid() {
-            gridUnit(20, 20);
+            for(int x = 0; x < this->gridX; x++) {
+                for(int y = 0; y < this->gridY; y++) {
+                    this->gridUnit(x, y);
+                }
+            }
         }
 };
 
