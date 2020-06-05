@@ -3,14 +3,18 @@
 
 #include "Grid.cpp"
 #include "Canvas.hpp"
+#include "Snake.cpp"
 
-Grid grid;
+
+Grid* grid = new Grid();
+Snake* player = new Snake();
 
 void renderScene(void) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	grid.drawGrid();
+	grid->drawGrid();
 
+	player->drawSnake();
 	// call the next frame 
 	glutSwapBuffers();
 }
@@ -28,13 +32,35 @@ void reshapeWindow(int widht, int height) {
 
 void gridInit () {
 	glClearColor(0.0, 0.0, 0.0, 1);
-	grid.initGrid(40, 40);
+	grid->initGrid(40, 40);
 }
 
 void frameTime(int time) {
     // Redesplay and force to continue rendering
     glutPostRedisplay();
     glutTimerFunc(1000/GAME_FPS, frameTime, 0);
+}
+
+void keyboardController(int key, int value1, int value2) {
+	switch (key) {
+		case GLUT_KEY_UP:
+			if(player->getSnakeDirection() != DOWN)
+				player->setSnakeDirection(UP);
+			break;
+		case GLUT_KEY_DOWN:
+			if(player->getSnakeDirection() != UP)
+				player->setSnakeDirection(DOWN);
+			break;
+		case GLUT_KEY_LEFT:
+			if(player->getSnakeDirection() != RIGHT)
+				player->setSnakeDirection(LEFT);
+			break;
+		case GLUT_KEY_RIGHT:
+			if(player->getSnakeDirection() != LEFT)
+				player->setSnakeDirection(RIGHT);
+			break;
+	}
+
 }
 
 void canvasInit(int argc, char *argv[])

@@ -13,6 +13,8 @@ void gridInit();
 
 void frameTime(int time);
 
+void keyboardController(int key, int value1, int value2);
+
 void canvasInit(int argc, char *argv[]);
 
 
