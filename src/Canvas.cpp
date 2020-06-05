@@ -2,10 +2,7 @@
 #include <GL/gl.h>
 
 #include "Grid.cpp"
-
-#define RESOLUCTION_X 600
-#define RESOLUCTION_Y 640
-#define GAME_FPS 10
+#include "Canvas.hpp"
 
 Grid grid;
 
