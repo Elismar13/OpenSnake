@@ -74,6 +74,7 @@ void canvasInit(int argc, char *argv[])
 	// register callbacks
 	glutDisplayFunc(renderScene);
 	glutReshapeFunc(reshapeWindow);
+	glutSpecialFunc(keyboardController);
 	gridInit();
     
     // Rendering in a defined time
