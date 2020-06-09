@@ -5,6 +5,7 @@
 #include "Canvas.hpp"
 #include "Snake.cpp"
 
+#include <time.h>
 
 Grid* grid = new Grid();
 Snake* player = new Snake();
@@ -15,6 +16,8 @@ void renderScene(void) {
 	grid->drawGrid();
 
 	player->drawSnake();
+
+	renderFood();
 	// call the next frame 
 	glutSwapBuffers();
 }
@@ -60,7 +63,6 @@ void keyboardController(int key, int value1, int value2) {
 				player->setSnakeDirection(RIGHT);
 			break;
 	}
-
 }
 
 void canvasInit(int argc, char *argv[])
@@ -69,7 +71,10 @@ void canvasInit(int argc, char *argv[])
     glutInitDisplayMode(GLUT_SINGLE || GLUT_RGB);
     glutInitWindowPosition(100, 100);
     glutInitWindowSize(RESOLUCTION_X, RESOLUCTION_Y);
-    glutCreateWindow("Hello, World!");
+    glutCreateWindow("OpenSnake");
+
+	// timestamps
+	srand(time(NULL));
 
 	// register callbacks
 	glutDisplayFunc(renderScene);
@@ -79,8 +84,29 @@ void canvasInit(int argc, char *argv[])
     
     // Rendering in a defined time
     // First call
-    glutTimerFunc(GAME_FPS, frameTime, 0);
+    glutTimerFunc(1000/GAME_FPS, frameTime, 0);
 
 	// enter GLUT event processing cycle
 	glutMainLoop();
 }
+
+void renderFood() {
+	static bool onScreen = false;
+
+	static short foodPostionX = 0;
+	static short foodPostionY = 0;
+
+	 //cout << "Numero aleatorio=" << foodPostion << endl;
+
+	//cout << onScreen << endl;
+
+	if(!onScreen) {
+		foodPostionX = (rand() % 38) + 1;
+		foodPostionY = (rand() % 38) + 1;
+		onScreen = true;
+	}
+
+	glColor3f(0.6, 0.8, 0.1);
+	glRectd(foodPostionX, foodPostionY, foodPostionX+1, foodPostionY+1);
+}
+
