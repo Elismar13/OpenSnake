@@ -3,7 +3,8 @@
 
 #define RESOLUCTION_X 600
 #define RESOLUCTION_Y 600
-#define GAME_FPS 1
+
+#define FPS 1
 
 void renderScene(void);
 
