@@ -1,7 +1,11 @@
 #include <GL/glut.h>
 #include <GL/gl.h>
 
+#include <iostream>
+
 #include "Snake.hpp"
+
+using namespace std;
 
 Snake :: Snake () {
     setSnakePosition(20, 20);
@@ -9,7 +13,7 @@ Snake :: Snake () {
 }
         
 bool Snake :: setSnakePosition(int positionX, int positionY) {
-    if(positionX >= 0 && positionX <= 40 && positionX >= 0 && positionX <= 40) {
+    if(positionX >= 1 && positionX < 39 && positionY >= 1 && positionY < 39) {
         this->positionX = positionX;
         this->positionY = positionY;
         return true;
@@ -60,6 +64,9 @@ void Snake :: drawSnake() {
         default:
             break;
     }
+
+        // cout << "Posicao X: " << posX << endl;
+        // cout << "Posicao Y: " << posY << endl;
 
     glRectd(posX, posY, posX+1, posY+1);
 
