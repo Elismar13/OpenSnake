@@ -1,6 +1,8 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#define GAME_FPS 60
+
 class Grid {
     private:
         int gridX, gridY;
