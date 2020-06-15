@@ -2,7 +2,7 @@
 <h2 align="center">
   :snake: OpenSnake :snake:
 </h2>
-<div style="text-align:center">
+<div style="margin-left: auto;">
   <img src="https://github.com/Elismar13/OpenSnake/blob/master/.github/snakegame.gif?raw=true" width="600" height="600">
 </div>
 
