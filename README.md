@@ -3,7 +3,7 @@
   :snake: OpenSnake :snake:
 </h2>
 
-<img src="https://github.com/Elismar13/OpenSnake/blob/master/.github/snakegame.gif?raw=true" width="40" height="40">
+<img src="https://github.com/Elismar13/OpenSnake/blob/master/.github/snakegame.gif?raw=true" width="600" height="600">
 
 <p align="center">
   <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
