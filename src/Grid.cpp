@@ -10,16 +10,24 @@ void Grid :: initGrid(int x, int y) {
 
 void Grid :: gridUnit(int x, int y, bool isBorder) {
     glLineWidth(1.0);
-    isBorder ? 
-        glColor3f(0.2, 0.9, 0.1):
-        glColor3f(0.5, 0.0, 0.6);
 
-    glBegin(GL_LINE_LOOP);
-        glVertex3d(x, y, 1);
-        glVertex3d(x+1, y, 1);
-        glVertex3d(x+1, y+1, 1);
-        glVertex3d(x, y+1, 1);
-    glEnd();
+    // Desenha uma borda completa
+    if(isBorder) {
+        glColor3f(0.09, 0.97, 0.07); 	// #1bf913	(27,249,19)
+        glRectd(x, y, x+1, y+1);
+    } 
+    
+    //Desenha apenas as linhas
+    else {
+        glColor3f(0.96, 0.12, 1.0); // #f222ff	(242,34,255)
+        glBegin(GL_LINE_LOOP);
+            glVertex3d(x, y, 1);
+            glVertex3d(x+1, y, 1);
+            glVertex3d(x+1, y+1, 1);
+            glVertex3d(x, y+1, 1);
+        glEnd();
+    }
+
 }
 
 void Grid :: drawGrid() {
