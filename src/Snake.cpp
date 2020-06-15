@@ -100,10 +100,14 @@ void Snake :: drawSnake() {
 
     for (int snakeIndex = 0; snakeIndex < points; snakeIndex++) {
         SnakeBody position = this->body[snakeIndex];
+
+        // Se for o header da cobra...
         if(snakeIndex <= 1) 
-            glColor3f(0.1, 0.485, 0.9);
+            glColor3f(0.0, 0.11, 1.0);  // #001eff	(0,30,255)
+        
+        //Se for o corpo...
         else 
-            glColor3f(0.45, 0.45, 0.45);
+            glColor3f(0.3, 0.74, 0.77); // #0abdc6	(10,189,198)
         glRectd(position.posX, position.posY, position.posX+1, position.posY+1);
     }
 
