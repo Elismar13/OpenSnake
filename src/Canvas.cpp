@@ -4,13 +4,14 @@
 #include "Grid.cpp"
 #include "Canvas.hpp"
 #include "Snake.cpp"
-
-#include <time.h>
+#include "Food.cpp"
 
 #include <iostream>
+#include <unistd.h>
 
 Grid* grid = new Grid();
 Snake* player = new Snake();
+Food* food = new Food();
 
 
 void keyboardController(int key, int value1, int value2) {
@@ -35,23 +36,13 @@ void keyboardController(int key, int value1, int value2) {
 }
 
 void renderFood() {
-	static bool onScreen = false;
+	food->foodController();
 
-	static short foodPostionX = 0;
-	static short foodPostionY = 0;
+	int foodPositionX = food->getFoodX();
+	int foodPositionY = food->getFoodY();
 
-	 //cout << "Numero aleatorio=" << foodPostion << endl;
-
-	//cout << onScreen << endl;
-
-	if(!onScreen) {
-		foodPostionX = (rand() % 38) + 1;
-		foodPostionY = (rand() % 38) + 1;
-		onScreen = true;
-	}
-
-	glColor3f(0.6, 0.8, 0.1);
-	glRectd(foodPostionX, foodPostionY, foodPostionX+1, foodPostionY+1);
+	glColor3f(0.8, 0.8, 0.1);
+	glRectd(foodPositionX, foodPositionY, foodPositionX+1, foodPositionY+1);
 }
 
 void gridInit() {
@@ -60,6 +51,8 @@ void gridInit() {
 }
 
 void renderScene() {
+	static short int renderNextEndingFrame = 0;
+
     glClear(GL_COLOR_BUFFER_BIT);
     
 	grid->drawGrid();
@@ -68,7 +61,31 @@ void renderScene() {
 
 	renderFood();
 
-    glutSwapBuffers();
+	if(player->getSnakeHeader().posX == food->getFoodX() 
+		&& player->getSnakeHeader().posY == food->getFoodY()) 
+		{
+			food->setCollider(false);
+			player->incrementPoints();
+
+			cout << player->getPoints() << endl;
+		}
+
+	// chama o proxímo frame
+	if(!player->isOver())
+    	glutSwapBuffers();
+	else{
+		if(!renderNextEndingFrame) {
+			glutSwapBuffers();
+			renderNextEndingFrame++;
+			if(renderNextEndingFrame > 0) {
+				cout << "Acabou!" << endl
+					 << "Sua pontuação: " << player->getPoints() << endl;
+				sleep(2);
+				exit(1);
+			}
+		} 
+	}
+		
 }
 
 void reshapeWindow(int width, int height) {
@@ -81,7 +98,7 @@ void reshapeWindow(int width, int height) {
 
 void frameTime(int) {
     glutPostRedisplay();
-    glutTimerFunc(100/GAME_FPS,frameTime, 0);
+    glutTimerFunc(1000/FPS, frameTime, 0);
 }
 
 void canvasInit(int argc,char **argv) {
@@ -94,8 +111,6 @@ void canvasInit(int argc,char **argv) {
     glutReshapeFunc(reshapeWindow);
 	glutSpecialFunc(keyboardController);
     gridInit();
-
-	srand(time(NULL));
 
     glutTimerFunc(0, frameTime, 0);
     glutMainLoop();
