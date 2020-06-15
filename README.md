@@ -2,9 +2,9 @@
 <h2 align="center">
   :snake: OpenSnake :snake:
 </h2>
-<div style="width: 100%; display: flex; align-items: center">
+<center>
   <img src="https://github.com/Elismar13/OpenSnake/blob/master/.github/snakegame.gif?raw=true" width="600" height="600">
-</div>
+</center>
 
 <p align="center">
   <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
