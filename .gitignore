@@ -1,1 +1,16 @@
 .vscode
+build
+src/Snake
+CMakeFiles
+cmake_install.cmake
+CPackConfig.cmake
+CPackSourceConfig.cmake
+src/cmake_install.cmake
+src/Makefile
+src/libSnake.a
+Snake
+.gitignore
+CMakeCache.txt
+testeCam.cpp
+src/OpenSnake
+Makefile

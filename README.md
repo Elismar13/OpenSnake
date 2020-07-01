@@ -20,12 +20,34 @@
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-- [C++]
+- C++
 - [OpenGL](https://www.opengl.org)
 
 Extras:
 
 - [GLUT](https://www.opengl.org/resources/libraries/glut/)
+
+
+## :wrench: Instalação
+
+> :penguin: Linux
+
+Antes de tudo, certifique-se de ter instalado no seu sistema:
+  `$ sudo apt install freeglut3-dev `
+
+- Requisitos:
+  - [CMAKE](https://cmake.org/) em sua versão 3.0.0 ou superior;
+
+Em seguida rode o seguinte comando na pasta raíz: 
+` make`
+
+No fim, basta apenas rodar: 
+`./src/OpenSnake` ou `./src/Snake` 
+</br>
+
+
+> :checkered_flag: Windows: Em breve...
+
 
 
 ## 💻 Projeto
@@ -37,6 +59,7 @@ Lives realizadas nos dias 07/06/2020 e 14/06/2020.
 
 Clique [**aqui**](https://www.twitch.tv/thushima_) para visitar meu canal na twitch e acompanhar novos projetos! :) 
 
+
 ## 🤔 Como contribuir
 
 - Faça um fork desse repositório;
@@ -44,7 +67,7 @@ Clique [**aqui**](https://www.twitch.tv/thushima_) para visitar meu canal na twi
 - Faça commit das suas alterações: `git commit -m 'feat: Minha nova feature'`;
 - Faça push para a sua branch: `git push origin minha-feature`.
 
-Depois que o merge da sua pull request for feito, você pode deletar a sua branch. Mudanças serão apresentadas no canal na twitch :)
+Depois que o merge da sua pull request for feito, você pode deletar a sua branch. Mudanças serão apresentadas no canal da twitch :)
 
 ## :memo: Licença
 
